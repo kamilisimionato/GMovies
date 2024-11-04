@@ -5,11 +5,14 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { View, Text, Platform, TouchableOpacity, ScrollView } from 'react-native'
 import { Bars3BottomLeftIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline'
 import TrendingMovies from '../components/trendingMovies'
+import MovieList from '../components/movieList'
 
 const ios = Platform.OS == "ios";
 
 export default function HomeScreen() {
   const [trending, setTrending] = useState([1,2,3]);
+  const [upcoming, setUpcoming] = useState([1,2,3]);
+  const [topRated, setTopRated] = useState([1,2,3]);
   return (
     <View className="flex-1 bg-neutral-800">
       <SafeAreaView className={ios ? "-mb-2" : "mb-3"}>
@@ -32,6 +35,10 @@ export default function HomeScreen() {
         contentContainerStyle={{ paddingBottom: 10 }}
       >
         <TrendingMovies data={trending} />
+
+        <MovieList title="Próximos lançamentos" data={upcoming} />
+
+        <MovieList title="Melhores Avaliados" data={topRated} />
       </ScrollView>
     </View>
   )
